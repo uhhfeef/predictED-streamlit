@@ -187,9 +187,8 @@ if user_query:
 
 #     st.session_state.chat_history.append(AIMessage(content=response))
 
-"""
-Questions:
-what are the different types of activities
-what is the rate of dropout in the past 1 year?
-show me the graph for the top 3 students based on performance from edtech.db and store it into data.png
-"""
+
+# Questions:
+# what are the different types of activities
+# what is the rate of dropout in the past 1 year?
+# show me the graph for the top 3 students based on performance from edtech.db and store it into data.png
