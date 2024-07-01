@@ -22,6 +22,8 @@ from langchain_community.utilities import SQLDatabase, GoogleSerperAPIWrapper
 import openai
 
 load_dotenv()
+
+
 # Auto-trace LLM calls in-context
 client = wrap_openai(openai.Client())
 
