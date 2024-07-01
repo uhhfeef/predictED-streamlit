@@ -14,9 +14,17 @@ from langchain.agents import initialize_agent
 from langchain.agents.agent_types import AgentType
 from langchain.agents import AgentExecutor, create_structured_chat_agent
 from langchain_core.prompts import ChatPromptTemplate, MessagesPlaceholder
-
+from langchain.agents import AgentExecutor, create_structured_chat_agent
+from langchain_core.prompts import ChatPromptTemplate, MessagesPlaceholder
+from langsmith.wrappers import wrap_openai
+from langsmith import traceable
+from langchain_community.utilities import SQLDatabase, GoogleSerperAPIWrapper
+import openai
 
 load_dotenv()
+# Auto-trace LLM calls in-context
+client = wrap_openai(openai.Client())
+
 
 # app config
 st.set_page_config(page_title="predictED", page_icon="🧑‍🎓📊")
@@ -28,6 +36,9 @@ llm = ChatOpenAI(model_name='gpt-3.5-turbo')
 # print(llm)
 toolkit = SQLDatabaseToolkit(db=db, llm=llm)
 
+# ----------------------------------------------------
+# Creating the tools
+# ----------------------------------------------------
 
 working_directory  = os.getcwd()
 tools = FileManagementToolkit(
@@ -41,7 +52,11 @@ tools.extend(SQLDatabaseToolkit(db=db, llm=llm).get_tools())
 #     tools, llm, agent= AgentType.STRUCTURED_CHAT_ZERO_SHOT_REACT_DESCRIPTION
 # )
 
-# Define the prompt - TESTING
+# ----------------------------------------------------
+# Define the prompt
+# ----------------------------------------------------
+
+# Define the prompt 
 system = '''Respond to the human as helpfully and accurately as possible. You have access to the following tools:
 
 {tools}
@@ -88,6 +103,7 @@ human = '''{input}
 
 (reminder to respond in a JSON blob no matter what)'''
 
+# Creating the prompt
 prompt = ChatPromptTemplate.from_messages(
     [
         ("system", system),
