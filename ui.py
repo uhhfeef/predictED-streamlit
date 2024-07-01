@@ -10,8 +10,6 @@ from langchain_community.utilities import SQLDatabase
 import matplotlib.pyplot as plt
 from langchain_community.agent_toolkits.file_management.toolkit import FileManagementToolkit
 from  langchain_experimental.tools.python.tool import PythonREPLTool
-from langchain.agents import initialize_agent
-from langchain.agents.agent_types import AgentType
 from langchain.agents import AgentExecutor, create_structured_chat_agent
 from langchain_core.prompts import ChatPromptTemplate, MessagesPlaceholder
 from langchain.agents import AgentExecutor, create_structured_chat_agent
@@ -146,6 +144,8 @@ if user_query:
             # st.pyplot(response)
             image_path = os.path.join(working_directory, 'data.png')
             st.image(image_path)
+            st.session_state.messages.append({"role": "assistant", "content": response['output']})
+            st.write(response['output'])
 
         else:  # If the response is text
             st.session_state.messages.append({"role": "assistant", "content": response['output']})
