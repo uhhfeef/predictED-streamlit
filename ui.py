@@ -94,7 +94,7 @@ Action:
 
 Begin! Reminder to ALWAYS respond with a valid json blob of a single action. Use tools if necessary. Respond directly if appropriate. Format is Action:```$JSON_BLOB```then Observation.
 Use the repltool to create matplotlib charts if the user is asking for a graph, plot, pie chart, etc. If you're using python repl tool, Instead of using plt.show() in your REPL tool input, which attempts to display the plot in an interactive window (not suitable for non-interactive environments like servers or certain REPL setups), you should save the plot to a file and strictly call in "data.png". Even if the user says "show me the plot", you should still return "data.png" as the response. NEVER RUN plt.show() in the REPL tool input.
-
+If the user says "give me insights" or "give me advice" or some variation where you have to analyse the output data and think, make sure you have data.png in the output as well as your thoughts.
 '''
 
 human = '''{input}
