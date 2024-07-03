@@ -21,6 +21,12 @@ import openai
 
 load_dotenv()
 
+'''
+Questions:\n
+What is the average engagement score for Course ID 102 during the last month?\n
+How many students have dropped out from each course this year?\n
+Can you show a bar chart of the average performance score by course?\n
+'''
 
 # Auto-trace LLM calls in-context
 client = wrap_openai(openai.Client())
@@ -204,9 +210,3 @@ if user_query:
 
 #     st.session_state.chat_history.append(AIMessage(content=response))
 
-'''
-Questions:\n
-What is the average engagement score for Course ID 102 during the last month?\n
-How many students have dropped out from each course this year?\n
-Can you show a bar chart of the average performance score by course?\n
-'''
