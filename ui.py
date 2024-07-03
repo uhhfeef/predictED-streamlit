@@ -21,6 +21,10 @@ import openai
 
 # load_dotenv()
 
+# app config
+st.set_page_config(page_title="predictED", page_icon="🧑‍🎓")
+st.header(' Welcome to predictED, your copilot for EdTech data insights.')
+
 '''
 Questions:\n
 What is the average engagement score for Course ID 102 during the last month?\n
@@ -30,9 +34,6 @@ Can you show a bar chart of the average performance score by course?\n
 
 
 
-# app config
-st.set_page_config(page_title="predictED", page_icon="🧑‍🎓")
-st.header(' Welcome to predictED, your copilot for EdTech data insights.')
 
 openai_api_key = st.sidebar.text_input("OpenAI API Key", type="password")
 if not openai_api_key:
@@ -45,7 +46,8 @@ client = wrap_openai(openai.Client())
 
 db = SQLDatabase.from_uri('sqlite:///edtech.db')
 
-llm = ChatOpenAI(model_name='gpt-3.5-turbo')
+llm = ChatOpenAI(api_key=openai_api_key, model='gpt-3.5-turbo')
+
 # print(llm)
 toolkit = SQLDatabaseToolkit(db=db, llm=llm)
 
