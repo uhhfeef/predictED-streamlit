@@ -29,7 +29,7 @@ st.header(' Welcome to predictED, your copilot for EdTech data insights.')
 A Gen AI-powered data analysis app for edtech founders. Perform SQL queries, generate visualizations, and receive AI-driven insights from student data to enhance educational outcomes. Ideal for identifying trends and making informed decisions.\n
 \n
 Example questions:\n
-What is the average engagement score for Course ID 102 during the last month?\n
+What is the average engagement score for Course ID C102 during the last month?\n
 How many students have dropped out from each course this year?\n
 Can you show a bar chart of the average performance score by course?\n
 '''
