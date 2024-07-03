@@ -45,7 +45,7 @@ client = wrap_openai(openai.Client(api_key=openai_api_key))
 
 db = SQLDatabase.from_uri('sqlite:///edtech.db')
 
-llm = ChatOpenAI(api_key=openai_api_key, model='gpt-3.5-turbo')
+llm = ChatOpenAI(api_key=openai_api_key)
 
 # print(llm)
 toolkit = SQLDatabaseToolkit(db=db, llm=llm)
