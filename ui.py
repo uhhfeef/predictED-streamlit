@@ -42,7 +42,7 @@ if not openai_api_key:
 
 
 # Auto-trace LLM calls in-context
-client = wrap_openai(openai.Client())
+client = wrap_openai(openai.Client(api_key=openai_api_key))
 
 db = SQLDatabase.from_uri('sqlite:///edtech.db')
 
