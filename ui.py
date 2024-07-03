@@ -28,8 +28,6 @@ How many students have dropped out from each course this year?\n
 Can you show a bar chart of the average performance score by course?\n
 '''
 
-# Auto-trace LLM calls in-context
-client = wrap_openai(openai.Client())
 
 
 # app config
@@ -40,6 +38,10 @@ openai_api_key = st.sidebar.text_input("OpenAI API Key", type="password")
 if not openai_api_key:
     st.info("Enter an OpenAI API Key to continue")
     st.stop()
+
+
+# Auto-trace LLM calls in-context
+client = wrap_openai(openai.Client())
 
 db = SQLDatabase.from_uri('sqlite:///edtech.db')
 
