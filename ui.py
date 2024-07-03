@@ -26,15 +26,14 @@ st.set_page_config(page_title="predictED", page_icon="🧑‍🎓")
 st.header(' Welcome to predictED, your copilot for EdTech data insights.')
 
 '''
+A data analysis app built for edtech founders. Utilizing Gen AI technology, this app not only allows users to perform SQL queries and generate graphical visualizations directly from student data but also provides AI-driven insights. Track engagement scores, performance metrics, and much more with ease. Ideal for exploring correlations, trends, and making data-driven decisions in educational settings, enhanced by the power of AI.\n
+\n
 Questions:\n
 What is the average engagement score for Course ID 102 during the last month?\n
 How many students have dropped out from each course this year?\n
 Can you show a bar chart of the average performance score by course?\n
 '''
-
-
-
-
+# Sidebar for taking openai input
 openai_api_key = st.sidebar.text_input("OpenAI API Key", type="password")
 if not openai_api_key:
     st.info("Enter an OpenAI API Key to continue")
