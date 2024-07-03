@@ -4,8 +4,6 @@ from dotenv import load_dotenv
 load_dotenv()
 
 #os.environ["HUGGINGFACEHUB_API_TOKEN"]
-openai_api_key = os.environ['OPENAI_API_KEY']
-
 from langchain.agents import create_sql_agent
 from langchain.llms import OpenAI
 from langchain.chat_models import ChatOpenAI
