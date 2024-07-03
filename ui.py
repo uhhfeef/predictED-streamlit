@@ -126,7 +126,7 @@ prompt = ChatPromptTemplate.from_messages(
 )
 
 agent = create_structured_chat_agent(llm, tools, prompt)
-agent_executor = AgentExecutor(agent=agent, tools=tools, max_iterations=20, verbose=True)
+agent_executor = AgentExecutor(agent=agent, tools=tools, max_iterations=25, verbose=True)
 
 # agent = initialize_agent(
 #     tools, llm, agent= AgentType.STRUCTURED_CHAT_ZERO_SHOT_REACT_DESCRIPTION, verbose=True
