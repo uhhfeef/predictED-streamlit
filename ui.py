@@ -19,7 +19,7 @@ from langsmith import traceable
 from langchain_community.utilities import SQLDatabase, GoogleSerperAPIWrapper
 import openai
 
-load_dotenv()
+# load_dotenv()
 
 '''
 Questions:\n
@@ -33,8 +33,13 @@ client = wrap_openai(openai.Client())
 
 
 # app config
-st.set_page_config(page_title="predictED", page_icon="🧑‍🎓📊")
+st.set_page_config(page_title="predictED", page_icon="🧑‍🎓")
 st.header(' Welcome to predictED, your copilot for EdTech data insights.')
+
+openai_api_key = st.sidebar.text_input("OpenAI API Key", type="password")
+if not openai_api_key:
+    st.info("Enter an OpenAI API Key to continue")
+    st.stop()
 
 db = SQLDatabase.from_uri('sqlite:///edtech.db')
 
@@ -179,13 +184,6 @@ if user_query:
 #         "chat_history": chat_history,
 #         "user_question": user_query,
 #     })
-
-# # session state
-# if "chat_history" not in st.session_state:
-#     st.session_state.chat_history = [
-#         AIMessage(content="Hello, I am a bot. How can I help you?"),
-#     ]
-
     
 # # conversation
 # for message in st.session_state.chat_history:
