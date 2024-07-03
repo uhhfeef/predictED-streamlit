@@ -205,8 +205,9 @@ if user_query:
 
 #     st.session_state.chat_history.append(AIMessage(content=response))
 
-
-# Questions:
-# what are the different types of activities
-# what is the rate of dropout in the past 1 year?
-# show me the graph for the top 3 students based on performance from edtech.db and store it into data.png
+'''
+Questions:\n
+What is the average engagement score for Course ID 102 during the last month?\n
+How many students have dropped out from each course this year?\n
+Can you show a bar chart of the average performance score by course?\n
+'''
