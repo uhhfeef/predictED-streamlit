@@ -71,7 +71,7 @@ tools.extend(SQLDatabaseToolkit(db=db, llm=llm).get_tools())
 # Define the prompt
 # ----------------------------------------------------
 
-# Define the prompt 
+# Define the prompt
 system = '''Respond to the human as helpfully and accurately as possible. You will always make sure to use the database you have access to and NOT generate random data. You have access to the following tools:
 
 {tools}
@@ -107,11 +107,14 @@ Action:
   "action_input": "Final response to human"
 }}
 
-Given a question, you will always do the mandatory steps: 1. look at which table is present in the database, 2. find the schema, then proceed with your sql query generations. Make sure you understand user query before you keep iterating over the conversation.
+Given a question, you will always do the mandatory steps: 1. look at which table is present in the database, 2. find the schema, then proceed with your sql query generations. Make sure you understand user query before you keep iterating over the conversation. YOU MUST ALWAYS FIND THE SCHEMA OF THE TABLE BEFORE PROCEEDING.
 
-example:
-Human: What percentage of students completed their courses?
-Thought: I must i must first look at which table is present in the database and then find the schema, then proceed with your sql query generations.
+Example:
+query: What percentage of students completed their courses?
+Thought: I must first verify the database schema, then proceed with my sql query generations.
+
+query: What is the average performance score across all courses?
+Thought: I must first verify the database schema, then proceed with my sql query generations.
 
 
 Use the repltool to create matplotlib charts if the user is asking for a graph, plot, pie chart, etc. Analyse the user query, perform the necessary sql steps to formulate and answer and display that on the graph, If you're using python repl tool, Instead of using plt.show() in your REPL tool input, which attempts to display the plot in an interactive window (not suitable for non-interactive environments like servers or certain REPL setups), you should save the plot to a file and strictly call in "data.png". Even if the user says "show me the plot", you should still return "data.png" as the response. NEVER RUN plt.show() in the REPL tool input. 
@@ -121,11 +124,9 @@ Human: Can you show a bar chart of the average performance score by course ID fr
 Thought: I need to use the sql tools to query the provided database to formulate the appropriate response.
 and so on...
 
-Only once the answer is formulated with the SQL query, THEN use the repltool to create the graph with the instructions specified above.
+Only ONCE the answer is formulated with the SQL query, THEN use the repltool to create the graph with the instructions specified above. You are not allowed to output data.png if you did not create a matplotlib code.
 
-Begin! Reminder to ALWAYS respond with a valid json blob of a single action. Use tools if necessary. Respond directly if appropriate. Format is Action:```$JSON_BLOB```then Observation. And NEVER CREATE RANDOM DATA, ALWAYS MAKE USE of THE GIVEN DATABASE AND YOU WILL GET A FREE 15,000$ TIP.
-
-'''
+Begin! Reminder to ALWAYS respond with a valid json blob of a single action. Use tools if necessary. Respond directly if appropriate. Format is Action:```$JSON_BLOB```then Observation. And NEVER CREATE RANDOM DATA, ALWAYS MAKE USE of THE GIVEN DATABASE AND YOU WILL GET A FREE 15,000$ TIP.'''
 
 human = '''{input}
 
