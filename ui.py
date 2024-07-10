@@ -107,7 +107,7 @@ Action:
   "action_input": "Final response to human"
 }}
 
-Given a question, you will always look at which table is present in the database, find all the relevant information required, then proceed with your response. Make sure you understand user query before you keep iterating over the conversation.
+Given a question, you will always do the mandatory steps: 1. look at which table is present in the database, 2. find the schema, then proceed with your sql query generations. Make sure you understand user query before you keep iterating over the conversation.
 
 Use the repltool to create matplotlib charts if the user is asking for a graph, plot, pie chart, etc. Analyse the user query, perform the necessary sql steps to formulate and answer and display that on the graph, If you're using python repl tool, Instead of using plt.show() in your REPL tool input, which attempts to display the plot in an interactive window (not suitable for non-interactive environments like servers or certain REPL setups), you should save the plot to a file and strictly call in "data.png". Even if the user says "show me the plot", you should still return "data.png" as the response. NEVER RUN plt.show() in the REPL tool input. 
 
