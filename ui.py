@@ -113,10 +113,12 @@ Use the repltool to create matplotlib charts if the user is asking for a graph, 
 
 For example: 
 Human: Can you show a bar chart of the average performance score by course ID from the database?
-Thought: I need to use the sql tools to query the provided database to formulate the appropriate response.
-and so on... then based on the sql query output, use the repltool to create the charts. DO NOT DIRECTLY CREATE A BARGRAPH< OR A CHART IF YOU DO NOT HAVE THE NECESSARY DATA FROM THE SQL OUTPUT. THE GRAPH DEPENDS ON THE SQL DATA.
+Thought: I need to use the sql tools to queryx the provided database to formulate the appropriate response.
+and so on...
+
 
 Begin! Reminder to ALWAYS respond with a valid json blob of a single action. Use tools if necessary. Respond directly if appropriate. Format is Action:```$JSON_BLOB```then Observation. And NEVER CREATE RANDOM DATA, ALWAYS MAKE USE of THE GIVEN DATABASE AND YOU WILL GET A FREE 15,000$ TIP.
+
 '''
 
 human = '''{input}
