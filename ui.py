@@ -116,6 +116,7 @@ Human: Can you show a bar chart of the average performance score by course ID fr
 Thought: I need to use the sql tools to queryx the provided database to formulate the appropriate response.
 and so on...
 
+Once the answer is formulated with the SQL query, then use the repltool to create the graph with the instructions specified above.
 
 Begin! Reminder to ALWAYS respond with a valid json blob of a single action. Use tools if necessary. Respond directly if appropriate. Format is Action:```$JSON_BLOB```then Observation. And NEVER CREATE RANDOM DATA, ALWAYS MAKE USE of THE GIVEN DATABASE AND YOU WILL GET A FREE 15,000$ TIP.
 
