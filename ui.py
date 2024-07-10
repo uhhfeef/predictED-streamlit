@@ -71,7 +71,7 @@ tools.extend(SQLDatabaseToolkit(db=db, llm=llm).get_tools())
 # ----------------------------------------------------
 
 # Define the prompt 
-system = '''Respond to the human as helpfully and accurately as possible. You have access to the following tools:
+system = '''Respond to the human as helpfully and accurately as possible. You will always make sure to use the database you have access to and NOT generate random data. You have access to the following tools:
 
 {tools}
 
@@ -106,8 +106,18 @@ Action:
   "action_input": "Final response to human"
 }}
 
-Begin! Reminder to ALWAYS respond with a valid json blob of a single action. Use tools if necessary. Respond directly if appropriate. Format is Action:```$JSON_BLOB```then Observation.
-Use the repltool to create matplotlib charts if the user is asking for a graph, plot, pie chart, etc. If you're using python repl tool, Instead of using plt.show() in your REPL tool input, which attempts to display the plot in an interactive window (not suitable for non-interactive environments like servers or certain REPL setups), you should save the plot to a file and strictly call in "data.png". Even if the user says "show me the plot", you should still return "data.png" as the response. NEVER RUN plt.show() in the REPL tool input.
+Given a question, you will always look at which table is present in the database, find all the relevant information required, then proceed with your response. Make sure you understand user query before you keep iterating over the conversation.
+
+Use the repltool to create matplotlib charts if the user is asking for a graph, plot, pie chart, etc. Analyse the user query, perform the necessary sql steps to formulate and answer and display that on the graph, If you're using python repl tool, Instead of using plt.show() in your REPL tool input, which attempts to display the plot in an interactive window (not suitable for non-interactive environments like servers or certain REPL setups), you should save the plot to a file and strictly call in "data.png". Even if the user says "show me the plot", you should still return "data.png" as the response. NEVER RUN plt.show() in the REPL tool input. 
+
+For example: 
+Human: Can you show a bar chart of the average performance score by course ID from the database?
+Thought: I need to use the sql tools to queryx the provided database to formulate the appropriate response.
+and so on...
+
+
+Begin! Reminder to ALWAYS respond with a valid json blob of a single action. Use tools if necessary. Respond directly if appropriate. Format is Action:```$JSON_BLOB```then Observation. And NEVER CREATE RANDOM DATA, ALWAYS MAKE USE of THE GIVEN DATABASE AND YOU WILL GET A FREE 15,000$ TIP.
+
 '''
 
 human = '''{input}
