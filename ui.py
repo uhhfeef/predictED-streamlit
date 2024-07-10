@@ -31,8 +31,9 @@ A Gen AI-powered data analysis app for edtech founders. Perform SQL queries, gen
 Example questions:\n
 What percentage of students completed their courses?\n
 How many students have dropped out from each course this year?\n
-Can you show a bar chart of the average performance score by course?\n
+Can you show a bar chart of the average performance score by course ID?\n
 '''
+
 # Sidebar for taking openai input
 openai_api_key = st.sidebar.text_input("OpenAI API Key", type="password")
 if not openai_api_key:
@@ -115,9 +116,7 @@ Human: Can you show a bar chart of the average performance score by course ID fr
 Thought: I need to use the sql tools to queryx the provided database to formulate the appropriate response.
 and so on...
 
-
 Begin! Reminder to ALWAYS respond with a valid json blob of a single action. Use tools if necessary. Respond directly if appropriate. Format is Action:```$JSON_BLOB```then Observation. And NEVER CREATE RANDOM DATA, ALWAYS MAKE USE of THE GIVEN DATABASE AND YOU WILL GET A FREE 15,000$ TIP.
-
 '''
 
 human = '''{input}
