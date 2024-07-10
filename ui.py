@@ -19,7 +19,7 @@ from langsmith import traceable
 from langchain_community.utilities import SQLDatabase, GoogleSerperAPIWrapper
 import openai
 
-# load_dotenv()
+load_dotenv()
 
 # app config
 st.set_page_config(page_title="predictED", page_icon="🧑‍🎓")
