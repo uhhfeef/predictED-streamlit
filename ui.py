@@ -29,7 +29,7 @@ st.header(' Welcome to predictED, your copilot for EdTech data insights.')
 A Gen AI-powered data analysis app for edtech founders. Perform SQL queries, generate visualizations, and receive AI-driven insights from student data to enhance educational outcomes. Ideal for identifying trends and making informed decisions.\n
 \n
 Example questions:\n
-What is the average engagement score for Course ID 102 during the last month?\n
+What percentage of students completed their courses?\n
 How many students have dropped out from each course this year?\n
 Can you show a bar chart of the average performance score by course?\n
 '''
@@ -45,7 +45,7 @@ client = wrap_openai(openai.Client(api_key=openai_api_key))
 
 db = SQLDatabase.from_uri('sqlite:///edtech.db')
 
-llm = ChatOpenAI(api_key=openai_api_key, model='gpt-3.5-turbo')
+llm = ChatOpenAI(api_key=openai_api_key, model="gpt-3.5-turbo")
 
 # print(llm)
 toolkit = SQLDatabaseToolkit(db=db, llm=llm)
@@ -136,7 +136,7 @@ prompt = ChatPromptTemplate.from_messages(
 )
 
 agent = create_structured_chat_agent(llm, tools, prompt)
-agent_executor = AgentExecutor(agent=agent, tools=tools, verbose=True)
+agent_executor = AgentExecutor(agent=agent, tools=tools, max_iterations=25, verbose=True)
 
 # agent = initialize_agent(
 #     tools, llm, agent= AgentType.STRUCTURED_CHAT_ZERO_SHOT_REACT_DESCRIPTION, verbose=True
