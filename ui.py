@@ -19,7 +19,7 @@ from langsmith import traceable
 from langchain_community.utilities import SQLDatabase, GoogleSerperAPIWrapper
 import openai
 
-# load_dotenv()
+load_dotenv()
 
 # app config
 st.set_page_config(page_title="predictED", page_icon="🧑‍🎓")
@@ -148,7 +148,7 @@ if user_query:
         st_cb = StreamlitCallbackHandler(st.container()) # Create a Streamlit callback handler
         # response = agent.run(user_query, callbacks = [st_cb]) # Response is the last statement in the agent's execution
         
-        response = agent_executor.invoke({"input": user_query}) # Response is the last statement in the agent's execution
+        response = agent_executor.invoke({"input": user_query}, callbacks = [st_cb]) # Response is the last statement in the agent's execution
         
         print('-------------\n', response)
         print(type(response))
