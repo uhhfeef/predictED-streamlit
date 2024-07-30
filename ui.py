@@ -33,6 +33,7 @@ What percentage of students completed their courses?\n
 How many students have dropped out from each course this year?\n
 Can you show a bar chart of the average performance score by course?\n
 '''
+
 # Sidebar for taking openai input
 openai_api_key = st.sidebar.text_input("OpenAI API Key", type="password")
 if not openai_api_key:
@@ -62,15 +63,8 @@ tools.append(
     PythonREPLTool())
 tools.extend(SQLDatabaseToolkit(db=db, llm=llm).get_tools())
 
-# agent = initialize_agent(
-#     tools, llm, agent= AgentType.STRUCTURED_CHAT_ZERO_SHOT_REACT_DESCRIPTION
-# )
 
-# ----------------------------------------------------
-# Define the prompt
-# ----------------------------------------------------
-
-# Define the prompt 
+# Prompt
 system = '''Respond to the human as helpfully and accurately as possible. You have access to the following tools:
 
 {tools}
@@ -128,9 +122,6 @@ prompt = ChatPromptTemplate.from_messages(
 agent = create_structured_chat_agent(llm, tools, prompt)
 agent_executor = AgentExecutor(agent=agent, tools=tools, max_iterations=25, verbose=True)
 
-# agent = initialize_agent(
-#     tools, llm, agent= AgentType.STRUCTURED_CHAT_ZERO_SHOT_REACT_DESCRIPTION, verbose=True
-# )
 
 if "messages" not in st.session_state or st.sidebar.button("Clear message history"):
     st.session_state["messages"] = [{"role": "assistant", "content": "How can I help you?"}]
@@ -166,48 +157,4 @@ if user_query:
 
 
 
-
-# def get_response(user_query, chat_history):
-
-#     template = """
-#     You are a helpful assistant. Answer the following questions considering the history of the conversation:
-
-#     Chat history: {chat_history}
-
-#     User question: {user_question}
-#     """
-
-#     prompt = ChatPromptTemplate.from_template(template)
-
-#     llm = ChatOpenAI()
-        
-#     chain = prompt | llm | StrOutputParser()
-    
-#     return chain.invoke({
-#         "chat_history": chat_history,
-#         "user_question": user_query,
-#     })
-    
-# # conversation
-# for message in st.session_state.chat_history:
-#     if isinstance(message, AIMessage):
-#         with st.chat_message("AI"):
-#             st.write(message.content)
-#     elif isinstance(message, HumanMessage):
-#         with st.chat_message("Human"):
-#             st.write(message.content)
-
-# # user input
-# user_query = st.chat_input("Type your message here...")
-# if user_query is not None and user_query != "":
-#     st.session_state.chat_history.append(HumanMessage(content=user_query))
-
-#     with st.chat_message("Human"):
-#         st.markdown(user_query)
-
-#     with st.chat_message("AI"):
-#         response = get_response(user_query, st.session_state.chat_history)
-#         st.write(response)
-
-#     st.session_state.chat_history.append(AIMessage(content=response))
 
