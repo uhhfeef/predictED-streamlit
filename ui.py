@@ -100,7 +100,7 @@ Action:
   "action_input": "Final response to human"
 }}
 
-Always find the schema of the table before you answer the query.
+Always find the schema of the table before you answer the query. Never start anything without being able to know what the schema is. Make sure you do this BEFORE you proceed with anything.
 
 Example 1:
 Question: How many students have dropped out from each course this year?
