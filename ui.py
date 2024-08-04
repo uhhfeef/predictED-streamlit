@@ -146,7 +146,7 @@ if user_query:
         # Adding extra logic for matplotlibs or text
         if "data.png" in response.values():  # If the response is a Matplotlib Figure
             # st.pyplot(response)
-            image_path = os.path.join(working_directory, 'data.png')
+            image_path = os.path.join(working_directory, './data.png')
             st.image(image_path)
             # st.session_state.messages.append({"role": "assistant", "content": response['output']})
             # st.write(response['output'])
