@@ -100,10 +100,15 @@ Action:
   "action_input": "Final response to human"
 }}
 
+Always find the schema of the table before you answer the query.
+
 Example 1:
 Question: How many students have dropped out from each course this year?
-Thought: I need to find the find the schema of the table before answer the query.
+Thought: I need to find the find the schema of the table before I answer the query.
 
+example 2:
+Question: Can you show a bar chart of the average performance score by course?
+Thought: I need to find the find the schema of the table before i answer the query.
 
 Begin! Reminder to ALWAYS respond with a valid json blob of a single action. Use tools if necessary. Respond directly if appropriate. Format is Action:```$JSON_BLOB```then Observation.
 
