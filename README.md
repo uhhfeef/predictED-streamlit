@@ -33,13 +33,8 @@ predictED is a Gen AI-powered data analysis application designed for EdTech foun
     - file_management.py: Provides tools for file management operations.
   - config/
     - config.py: Loads environment variables and contains configuration settings.
-  - share/
-    - jupyter/
-      - nbconfig/notebook.d/pydeck.json: Configuration for the Pydeck extension in Jupyter.
-      - kernels/python3/kernel.json: Configuration for the Python 3 kernel in Jupyter.
-      - jupyter/nbextensions/pydeck/extensionRequires.js: JavaScript file for loading the Pydeck extension.
   - requirements.txt: Lists all the dependencies required for the project.
-  - .gitignore: Specifies files and directories to be ignored by Git.
+
 ## Contributing
 Contributions are welcome! Please follow these steps to contribute:
 1. Fork the repository.
