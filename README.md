@@ -1,4 +1,4 @@
-# Project Title: predictED
+# predictED
 ## Overview
 predictED is a Gen AI-powered data analysis application designed for EdTech founders. It allows users to perform SQL queries, generate visualizations, and receive AI-driven insights from student data to enhance educational outcomes. The application is built using Python and Streamlit, leveraging various libraries for data manipulation and visualization.
 ## Features
