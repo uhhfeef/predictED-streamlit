@@ -6,6 +6,8 @@ old
 pyvenv.cfg
 # C extensions
 *.so
+share/
+etc/
 
 # Distribution / packaging
 .Python
